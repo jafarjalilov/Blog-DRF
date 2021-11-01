@@ -29,7 +29,7 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices=options, default='published')
     # MANAGERS
     objects = models.Manager() # default manager
-    postojects = PostObjects() # custom manager
+    postobjects = PostObjects() # custom manager
 
     class Meta:
         ordering = ('-published',)

@@ -1,10 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from blog.models import Post
+from .serializers import PostSerializer
 
 # Create your views here.
 
-def PostList(request):
-    return HttpResponse('PostList')
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.postobjects.all()
+    serializer_class = PostSerializer
 
-def PostDetail(request):
-    return HttpResponse('PostDetail')
+class PostDetail(generics.RetrieveDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
